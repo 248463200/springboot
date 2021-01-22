@@ -1,0 +1,12 @@
+user:
+  id: ${random.uuid}
+  name: pyh
+  birth: 1997/07/01
+  company:
+    name: Alibaba
+    level: 7
+  cards: {k1: v1,k2: v2}
+  books:
+    - first head
+    - mysql
+    - 高并发编程艺术
