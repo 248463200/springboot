@@ -1,3 +1,5 @@
+
+
 user:
   id: ${random.uuid}
   name: pyh
@@ -10,3 +12,25 @@ user:
     - first head
     - mysql
     - 高并发编程艺术
+
+
+jsr303:
+  id: ${random.uuid}
+  last-name: yh
+  birth: 1997/07/01
+  company:
+    name: Alibaba
+    level: 7
+  cards: {k1: v1,k2: v2}
+  books:
+    - first head
+    - mysql
+    - 高并发编程艺术
+  email: 248462@qq.com
+
+
+
+spring:
+  mvc:
+    async:
+      request-timeout:

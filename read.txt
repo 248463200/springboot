@@ -1,0 +1,45 @@
+sp01_di:
+    使用yaml注入bean
+    bean加注解@ConfigurationProperties(prefix = "xxx")
+
+sp02_jsr303:
+    jrs303校验  eamil格式，非空校验等
+    bean加注解@Validated
+    属性加    @Email(message = "eamil格式有误")等
+
+sp03_mvc：
+    mvc加载静态资源方式
+    1.从spring.factories中找到mvc自动装配的类WebMvcAutoConfiguration
+    2.找到加载静态资源方法addResourceHandlers
+        protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+                super.addResourceHandlers(registry);
+
+                3.首先去判断有没有被自定义，如果被自定义按自定义的
+                if (!this.resourceProperties.isAddMappings()) {
+                    logger.debug("Default resource handling disabled");
+                }    else {
+                    ServletContext servletContext = this.getServletContext();
+
+                     4.否则去寻找/webjars/**下的资源
+                     5.webjars就是以maven形式加载静态资源
+                    this.addResourceHandler(registry, "/webjars/**", "classpath:/META-INF/resources/webjars/");
+                    this.addResourceHandler(registry, this.mvcProperties.getStaticPathPattern(), (registration) -> {
+
+                    6.如果没有引入webjars项目里的静态路径去加载资源
+                    classpath: "classpath:/resources/", "classpath:/static/", "classpath:/public/
+                    7.优先级是resources->static->public
+                        registration.addResourceLocations(this.resourceProperties.getStaticLocations());
+                        if (servletContext != null) {
+                            registration.addResourceLocations(new Resource[]{new ServletContextResource(servletContext, "/")});
+                        }
+                    });
+                }
+            }
+
+
+    webjars 引入jquery
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>jquery</artifactId>
+                <version>3.5.1</version>
+            </dependency>
