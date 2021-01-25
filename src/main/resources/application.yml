@@ -1,4 +1,4 @@
-
+spring.profiles.active: test
 
 user:
   id: ${random.uuid}
