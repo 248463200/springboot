@@ -3,7 +3,7 @@ package com.pyh.springboot.sp05_bootapplication.firstDemo;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan(basePackages = "com.gupaoedu.springboot.springbootfirst")
+@ComponentScan(basePackages = "com.pyh.springboot.sp05_bootapplication.firstDemo")
 public class ConfigurationMain {
 
     public static void main(String[] args) {
